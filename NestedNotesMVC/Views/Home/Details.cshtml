@@ -1,0 +1,26 @@
+﻿@model ServiceResponse<NotesVM>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+
+    <div id="noteTree">
+        @Html.Partial("~/Views/Home/Partials/Notes/_NoteTree.cshtml", new List<NotesVM>(){Model.Value})
+    </div>
+
+</div>
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

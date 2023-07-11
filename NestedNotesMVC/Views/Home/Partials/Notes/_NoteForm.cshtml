@@ -1,0 +1,16 @@
+﻿@model NotesVM
+
+@using (Html.BeginForm("EditNote","Home"))
+{
+
+    @Html.HiddenFor(model=> model.Id)
+    <div>
+        <label for="Title">Başlık:</label>
+        @Html.TextBoxFor(model=> model.Title)
+    </div>
+    <div>
+        <label for="Content">İçerik</label>
+        @Html.TextBoxFor(model=> model.Content)
+    </div>
+    <button type="submit">Kaydet</button>
+}

@@ -1,0 +1,38 @@
+﻿@model List<NotesVM>
+
+
+
+<ul>
+    @foreach (var note in Model)
+    {
+        <li>
+
+            <strong>@note.Title</strong>
+
+            <div class="text-end">
+                @*<button class="edit-button btn-primary" data-noteid="@note.Id">Düzenle</button>*@
+                <a asp-action="Create" asp-route-id="@note.Id">Create Child</a> |
+                <a asp-action="Edit" asp-route-id="@note.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@note.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@note.Id">Delete</a>
+
+            </div>
+            
+
+            <p>@note.Content</p>
+            <hr>
+
+            <div class="edit-form-container" id="edit-form-@note.Id" style="display: none">
+                @Html.Partial("~/Views/Home/Partials/Notes/_NoteForm.cshtml",note);
+            </div>
+
+            @if (note.Notes.Any())
+            {
+                Html.RenderPartial("~/Views/Home/Partials/Notes/_NoteTree.cshtml", note.Notes);
+            }
+
+
+        </li>
+    }
+</ul>
+
